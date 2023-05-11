@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Run clippy
     env: 
-      DATABASE_URL: postgres:://username:password@localhost/demo
+      DATABASE_URL: postgres:://runner:password@localhost/demo
     services:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: username
+          POSTGRES_USER: runner
           POSTGRES_PASSWORD: password
           POSTGRES_DB: demo
         options: >-
