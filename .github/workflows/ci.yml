@@ -1,0 +1,25 @@
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Run clippy
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Setup rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Run clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+  check-typo:
+    runs-on: ubuntu-latest
+    name: Run typos
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Setup rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install typos
+        run: cargo install typos-cli
+      - name: Run typos
+        run: typos
