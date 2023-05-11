@@ -27,6 +27,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - name: Install sqlx cli
         run: cargo install sqlx-cli
+      - name: Migrate
+        run: sqlx migrate run
       - name: Run clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
   check-typo:
